@@ -1,0 +1,60 @@
+**Dax Formulas used in this Project**
+
+**COUNT Functions**
+- Total Orders = DISTINCTCOUNT(Amazon[OrderID])
+- Total Unique Customers = DISTINCTCOUNT(Amazon[CustomerID])
+
+**SUM Functions**
+- Total Customers = SUM(Amazon[CustomerID])
+- Total Revenue = SUM(Amazon[TotalAmount])
+- Total Quantity Sold = SUM(Amazon[Quantity])
+
+- TotalSales = SUMX(Amazon, (Amazon[UnitPrice] - Amazon[Discount Amount]) * Amazon[Quantity])
+- ProfitPerUnit = 
+SUMX(Amazon, Amazon[UnitPrice] - Amazon[Discount Amount] - Amazon[Tax] - Amazon[ShippingCost])
+
+**AVERAGE Functions**
+- Average Order Value = AVERAGE(Amazon[TotalAmount])
+- AvgDiscount% = AVERAGE(Amazon[Discount Amount]) / AVERAGE(Amazon[UnitPrice]) * 100
+
+**DIVIDE Functions**
+- Profit%Margin = 
+DIVIDE([Profit], [TotalSales], 0) * 100
+- Retention Rate = DIVIDE([RepeatCustomers], [Total Unique Customers], 0)
+
+**CALCULATE Funtions**
+- RepeatCustomers = 
+  CALCULATE(
+      DISTINCTCOUNT(Amazon[CustomerID]),
+      FILTER(
+          VALUES(Amazon[CustomerID]),
+          COUNTROWS(FILTER(Amazon, Amazon[CustomerID] = EARLIER(Amazon[CustomerID]))) > 1
+      )
+)
+
+- Shipped Orders = 
+CALCULATE(
+    COUNTROWS(Amazon),
+    Amazon[OrderStatus] = "Shipped")
+
+- Returned Orders = 
+CALCULATE(
+    COUNTROWS(Amazon),
+    Amazon[OrderStatus] = "Returned")
+
+- Pending Orders = 
+CALCULATE(
+    COUNTROWS(Amazon),
+    Amazon[OrderStatus] = "Pending")
+
+- Cancelled Orders = 
+CALCULATE(
+    COUNTROWS(Amazon),
+    Amazon[OrderStatus] = "Cancelled")
+
+- Delivered Orders = 
+CALCULATE(
+    COUNTROWS(Amazon),
+    Amazon[OrderStatus] = "Delivered")
+
+

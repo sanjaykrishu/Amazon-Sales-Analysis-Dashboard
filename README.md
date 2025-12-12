@@ -81,7 +81,7 @@ A complete analytics solution enabling Amazon stakeholders to:
 
 Monitor performance in real time
 
-# I asked Chatgpt "pretend you are the manager of amazon and I'm a data analyst and ask me questions about the data to find insights and patterns"
+## I asked Chatgpt "pretend you are the manager of amazon and I'm a data analyst and ask me questions about the data to find insights and patterns"
 
 # 🛒 Round 1 — Data Quality & Understanding
 

@@ -1,4 +1,4 @@
-**Dax Formulas used in this Project**
+#Dax Formulas used in this Project
 
 **COUNT Functions**
 - Total Orders = DISTINCTCOUNT(Amazon[OrderID])
